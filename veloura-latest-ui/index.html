@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="VELOURA — beauty, elevated.">
+  <title>VELOURA — Beauty, Elevated</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <a class="logo" href="#home">VELOURA</a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#collections">Collections</a>
+      <a href="#ritual">Our Ritual</a>
+      <a href="#journal">Journal</a>
+    </nav>
+
+    <div class="nav-right">
+      <button class="icon" id="searchBtn" aria-label="Search">⌕</button>
+      <button class="icon" aria-label="Account">♙</button>
+      <button class="icon cart" aria-label="Cart">♧<i id="cartCount">0</i></button>
+      <a class="nav-shop" href="#collections">Shop now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-shade"></div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow">THE VELOURA RITUAL</p>
+        <h1>Beauty<br><em>in every</em><br>moment.</h1>
+        <p class="lead">Thoughtfully crafted skincare inspired by nature, designed for your everyday glow.</p>
+
+        <div class="hero-actions">
+          <a class="button light" href="#collections">Explore collection <span>↗</span></a>
+          <a class="under-link" href="#ritual">Discover our story</a>
+        </div>
+      </div>
+
+      <div class="hero-caption reveal">
+        <span>01</span>
+        <div>
+          <b>Radiant Glow</b>
+          <small>Signature serum · 30ml</small>
+        </div>
+      </div>
+
+      <div class="scroll-cue"><span></span>Scroll to explore</div>
+    </section>
+
+    <section class="intro section reveal">
+      <p class="eyebrow dark">BEAUTY, REIMAGINED</p>
+      <h2>Less noise.<br><em>More glow.</em></h2>
+      <p class="intro-text">Veloura brings together sensorial textures, refined formulas and the quiet beauty of nature to create rituals worth slowing down for.</p>
+    </section>
+
+    <section class="section" id="collections">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow dark">EXPLORE VELOURA</p>
+          <h2>Shop by <em>ritual</em></h2>
+        </div>
+        <a class="under-link dark" href="#">View all ↗</a>
+      </div>
+
+      <div class="collection-grid">
+        <article class="collection-card reveal">
+          <div class="collection-art serum"></div>
+          <div class="collection-info"><span>01</span><h3>Serums</h3><p>Concentrated radiance.</p><a href="#">Explore ↗</a></div>
+        </article>
+        <article class="collection-card reveal">
+          <div class="collection-art moisturizer"></div>
+          <div class="collection-info"><span>02</span><h3>Moisturizers</h3><p>Softness, sealed in.</p><a href="#">Explore ↗</a></div>
+        </article>
+        <article class="collection-card reveal">
+          <div class="collection-art cleanser"></div>
+          <div class="collection-info"><span>03</span><h3>Cleansers</h3><p>A fresh beginning.</p><a href="#">Explore ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ritual section reveal" id="ritual">
+      <div class="ritual-image"></div>
+      <div class="ritual-copy">
+        <p class="eyebrow">THE VELOURA PHILOSOPHY</p>
+        <h2>Nature meets<br><em>modern beauty.</em></h2>
+        <p>From mineral-rich crystals to botanical extracts, every Veloura ritual is created to feel as beautiful as it performs.</p>
+        <a class="button dark-button" href="#journal">Our story <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="section featured reveal">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow dark">THE EDIT</p>
+          <h2>Featured <em>essentials</em></h2>
+        </div>
+        <a class="under-link dark" href="#">Shop all ↗</a>
+      </div>
+
+      <div class="product-grid">
+        <article class="product">
+          <div class="product-art p1"><span>BESTSELLER</span></div>
+          <div class="product-meta"><div><h3>Rose Glow Serum</h3><p>Radiance · Hydration</p></div><strong>₹1,899</strong></div>
+          <button class="add" data-product="Rose Glow Serum">Add to bag <b>+</b></button>
+        </article>
+        <article class="product">
+          <div class="product-art p2"><span>NEW</span></div>
+          <div class="product-meta"><div><h3>Amethyst Elixir</h3><p>Renewal · Balance</p></div><strong>₹1,999</strong></div>
+          <button class="add" data-product="Amethyst Elixir">Add to bag <b>+</b></button>
+        </article>
+        <article class="product">
+          <div class="product-art p3"><span>ESSENTIAL</span></div>
+          <div class="product-meta"><div><h3>Clear Quartz Radiance</h3><p>Clarity · Glow</p></div><strong>₹1,799</strong></div>
+          <button class="add" data-product="Clear Quartz Radiance">Add to bag <b>+</b></button>
+        </article>
+      </div>
+    </section>
+
+    <section class="quote reveal" id="journal">
+      <p class="eyebrow">A NOTE FROM VELOURA</p>
+      <blockquote>“Beauty isn't something<br>to chase. <em>It's something<br>to feel.</em>”</blockquote>
+      <a class="under-link" href="#">Read the journal ↗</a>
+    </section>
+
+    <section class="newsletter reveal">
+      <div>
+        <p class="eyebrow">THE VELOURA CIRCLE</p>
+        <h2>Come closer to<br><em>your ritual.</em></h2>
+      </div>
+      <form id="newsletter">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Join ↗</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#home">VELOURA</a>
+    <span>Beauty, elevated.</span>
+    <div><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Contact</a></div>
+    <small>© 2026 Veloura. All rights reserved.</small>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="search-overlay" id="searchOverlay">
+    <button id="closeSearch">×</button>
+    <p class="eyebrow dark">SEARCH VELOURA</p>
+    <input id="searchInput" placeholder="What are you looking for?">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
