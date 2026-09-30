@@ -76,39 +76,23 @@ function findById(id) {
   return null;
 }
 
-/* ---------- real product photography (serum / perfume / lipstick / cream / pink) ---------- */
-var LUXE = {
-  serum: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7f5?auto=format&fit=crop&w=600&q=60',
-  amber: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=60',
-  perfume: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=60',
-  lipstick: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=60',
-  cream: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=60',
-  pink: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=600&q=60',
-  bottles: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=600&q=60',
-  editorial: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=60'
-};
-
-function luxeKind(p) {
-  var hay = ((p && p.category) || '').toString().toLowerCase() + ' ' +
-            ((p && p.cosmeticName) || '').toString().toLowerCase();
-  if (/lip|rouge|matte|velvet/.test(hay)) return 'lipstick';
-  if (/parfum|perfume|fragrance|mist|oud/.test(hay)) return 'perfume';
-  if (/cream|moistur|lotio|jar|butter|masque|mask/.test(hay)) return 'cream';
-  if (/amber|pump|gold|honey/.test(hay)) return 'amber';
-  if (/rose|pink|blush|glow|radiance|poudre/.test(hay)) return 'pink';
-  if (/serum|elixir|drop|oil|essence/.test(hay)) return 'serum';
-  return 'editorial';
-}
-
-function photoFor(p) {
-  var k = luxeKind(p);
-  if (LUXE[k]) return LUXE[k];
-  var keys = ['serum', 'amber', 'perfume', 'lipstick', 'cream', 'pink', 'bottles'];
-  return LUXE[keys[Math.abs(Number(p && p.cosmeticId) || 0) % keys.length]];
+/* ---------- product photos: YOUR images first, CSS fallback behind ----------
+   Save per-product PNGs as:  web/images/products/{cosmeticId}.png  (e.g. 101.png)
+   Optional generics: web/images/p1.png, p2.png, p3.png (used as 2nd try) */
+function pgVariant(p) {
+  var id = Math.abs(Number(p && p.cosmeticId) || 0);
+  return id % 4;
 }
 
 function photoImgHTML(p) {
-  return '<img src="' + photoFor(p) + '" alt="" loading="lazy" onerror="this.remove()">';
+  var id = esc(p && p.cosmeticId);
+  var v = pgVariant(p);
+  return '<div class="pg-art v' + v + '"><div class="pg-mini"></div>' +
+    '<span class="pg-mono">' + esc(initials(p && p.cosmeticName)) + '</span></div>' +
+    '<img class="p-photo" src="images/products/' + id + '.png" ' +
+    'data-v="' + v + '" alt="" loading="lazy" ' +
+    'onerror="this.onerror=null;this.src=\'images/p\' + ((Number(this.getAttribute(\'data-v\')) % 3) + 1) + \'.png\';' +
+    'this.onerror=function(){this.remove();};">';
 }
 
 /* ---------- toasts ---------- */
@@ -117,8 +101,7 @@ function toast(type, title, msg) {
   var el = document.createElement('div');
   el.className = 'toast ' + (type || 'info');
   var icon = type === 'success' ? '✓' : type === 'error' ? '!' : '✦';
-  el.innerHTML = '<div style="font-weight:600;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
-    icon + '</div><div><b>' + esc(title) + '</b><span>' + esc(msg) + '</span></div>' +
+  el.innerHTML = '<div><b>' + esc(title) + '</b><span>' + esc(msg) + '</span></div>' +
     '<button aria-label="Dismiss">&times;</button>';
   el.querySelector('button').onclick = function () { dismiss(); };
   box.appendChild(el);
@@ -284,7 +267,6 @@ function updateStats() {
 function renderHeroChip() {
   var el = $('heroChipBody');
   if (!allCosmetics.length) {
-    el.innerHTML = '<b>Veloura Collection</b><span>Awaiting API connection…</span>';
     return;
   }
   var lows = allCosmetics.slice().sort(function (a, b) { return Number(a.quantity) - Number(b.quantity); })[0];

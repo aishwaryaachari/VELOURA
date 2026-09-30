@@ -3,329 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="description" content="VELOURA — beauty, elevated. Live inventory atelier.">
-  <title>VELOURA — Beauty, Elevated</title>
+  <meta name="description" content="velora — Beauty That Feels Like You.">
+  <title>velora — Beauty That Feels Like You</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="nav" id="nav">
-    <a class="logo" href="#home">VELOURA</a>
-
+    <a class="logo" href="#home">velora</a>
     <nav>
       <a href="#home">Home</a>
-      <a href="#collections">Collections</a>
-      <a href="#ritual">Our Ritual</a>
+      <a href="#collections">Shop</a>
+      <a href="#ritual">About</a>
       <a href="#journal">Journal</a>
     </nav>
-
     <div class="nav-right">
-      <span class="api-dot" id="apiLabel" title="API status">●</span>
       <button class="icon" id="searchBtn" aria-label="Search">⌕</button>
       <button class="icon" aria-label="Account">♙</button>
-      <button class="icon cart" aria-label="Cart" onclick="document.getElementById('collections').scrollIntoView({behavior:'smooth'})">♧<i id="cartCount">0</i></button>
-      <a class="nav-shop" href="#collections">Shop now</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+      <button class="icon cart" aria-label="Bag">♧<i id="cartCount">0</i></button>
+      <a class="nav-shop" href="#featured">Shop Now</a>
     </div>
   </header>
 
   <main>
+    <!-- HERO — like reference -->
     <section class="hero" id="home">
       <div class="hero-bg"></div>
       <div class="hero-shade"></div>
-
-      <div class="hero-copy reveal">
-        <p class="eyebrow">RITUALS FOR A BRIGHTER YOU</p>
-        <h1>Beauty<br>That Feels<br><em>Like You</em></h1>
-        <p class="lead">Skincare infused with nature's finest energies. Pure. Radiant. Real.</p>
-
-        <div class="hero-actions">
-          <a class="button light" href="#collections">Shop Collection <span>→</span></a>
-          <a class="under-link" href="#ritual">Discover our story</a>
-        </div>
-
-        <div class="trust-row">
-          <div class="avatars"><i></i><i></i><i></i></div>
-          <small>Trusted by 50K+ glowing souls</small>
-        </div>
-      </div>
-
-      <div class="hero-caption reveal" id="heroChipBody">
-        <span>01</span>
-        <div>
-          <b>Radiant Glow</b>
-          <small>Signature serum · 30ml</small>
+      <div class="hero-inner hero-inner--single">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">RITUALS FOR A BRIGHTER YOU</p>
+          <h1>Beauty<br>That Feels<br>Like You</h1>
+          <p class="lead">Skincare infused with nature's finest energies. Pure. Radiant. Real.</p>
+          <div class="hero-actions">
+            <a class="button light" href="#featured">Shop Collection <span>→</span></a>
+            <a class="button outline-white" href="#collections">Explore</a>
+          </div>
+          <div class="trust-row">
+            <div class="avatars"><i></i><i></i><i></i></div>
+            <small>Trusted by 50K+ glowing souls</small>
+          </div>
         </div>
       </div>
-
-      <div class="scroll-cue"><span></span>Scroll to explore</div>
-      <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,60 C240,95 360,10 720,45 C1080,80 1200,15 1440,55 L1440,90 L0,90 Z"/></svg>
+      <svg class="hero-wave" viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,40 C240,80 480,0 720,30 C960,60 1200,10 1440,40 L1440,70 L0,70 Z"/></svg>
     </section>
 
+    <!-- TRUST STRIP -->
     <div class="trust-strip reveal">
-      <div><i>◍</i><span>Clean Ingredients</span></div>
+      <div><i>🍃</i><span>Clean Ingredients</span></div>
       <div><i>♡</i><span>Cruelty Free</span></div>
       <div><i>❀</i><span>Dermatologist Tested</span></div>
       <div><i>✦</i><span>Visible Results</span></div>
     </div>
 
-    <div class="api-strip" id="apiError" style="display:none;">
-      <b>Connection problem</b>
-      <span id="apiErrorMsg">Unable to connect to Veloura REST API.</span>
-      <button onclick="loadCosmetics()">Retry</button>
-    </div>
-
-    <section class="intro section reveal">
-      <p class="eyebrow dark">BEAUTY, REIMAGINED</p>
-      <h2>Less noise.<br><em>More glow.</em></h2>
-      <p class="intro-text">Veloura brings together sensorial textures, refined formulas and the quiet beauty of nature to create rituals worth slowing down for.</p>
-    </section>
-
+    <!-- SHOP BY COLLECTION -->
     <section class="section" id="collections">
       <div class="section-head reveal">
-        <div>
-          <p class="eyebrow dark">EXPLORE VELOURA</p>
-          <h2>Shop by <em>ritual</em></h2>
-        </div>
-        <a class="under-link dark" href="#atelier">View all ↗</a>
+        <h2>Shop by Collection</h2>
+        <a class="under-link dark" href="#featured">View All →</a>
       </div>
-
       <div class="collection-grid">
         <article class="collection-card reveal">
-          <div class="collection-art serum"></div>
-          <div class="collection-info"><span>01</span><h3>Serums</h3><p>Concentrated radiance.</p><a href="#atelier">Explore ↗</a></div>
+          <div class="collection-art"><img src="images/serum.png" alt="Serums"></div>
+          <div class="collection-info"><div><h3>Serums</h3><p>Targeted care,<br>visible glow.</p></div><a href="#featured" aria-label="Serums">→</a></div>
         </article>
         <article class="collection-card reveal">
-          <div class="collection-art moisturizer"></div>
-          <div class="collection-info"><span>02</span><h3>Moisturizers</h3><p>Softness, sealed in.</p><a href="#atelier">Explore ↗</a></div>
+          <div class="collection-art"><img src="images/moisturizer.png" alt="Moisturizers"></div>
+          <div class="collection-info"><div><h3>Moisturizers</h3><p>Deep hydration,<br>lasting softness.</p></div><a href="#featured" aria-label="Moisturizers">→</a></div>
         </article>
         <article class="collection-card reveal">
-          <div class="collection-art cleanser"></div>
-          <div class="collection-info"><span>03</span><h3>Cleansers</h3><p>A fresh beginning.</p><a href="#atelier">Explore ↗</a></div>
+          <div class="collection-art"><img src="images/cleanser.png" alt="Cleansers"></div>
+          <div class="collection-info"><div><h3>Cleansers</h3><p>A fresh start,<br>every day.</p></div><a href="#featured" aria-label="Cleansers">→</a></div>
+        </article>
+        <article class="collection-card reveal">
+          <div class="collection-art"><img src="images/sets.png" alt="Skincare Sets"></div>
+          <div class="collection-info"><div><h3>Skincare Sets</h3><p>Complete rituals<br>for radiant skin.</p></div><a href="#featured" aria-label="Sets">→</a></div>
         </article>
       </div>
     </section>
 
-    <section class="ritual section reveal" id="ritual">
+    <!-- RITUAL BANNER -->
+    <section class="ritual reveal" id="ritual">
       <div class="ritual-image"></div>
+      <div class="ritual-shade"></div>
       <div class="ritual-copy">
-        <p class="eyebrow">THE VELOURA PHILOSOPHY</p>
-        <h2>Nature meets<br><em>modern beauty.</em></h2>
-        <p>From mineral-rich crystals to botanical extracts, every Veloura ritual is created to feel as beautiful as it performs.</p>
-        <a class="button dark-button" href="#journal">Our story <span>↗</span></a>
+        <p class="eyebrow">THE VELORA RITUAL</p>
+        <h2>Nature Meets<br><em>Modern Beauty</em></h2>
+        <p>Crystal-infused formulations for your natural glow.</p>
+        <a class="button light" href="#journal">Discover Our Story</a>
       </div>
     </section>
 
-    <!-- Featured essentials: LIVE from GET /api/cosmetics (first 3 rows) -->
-    <section class="section featured reveal">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow dark">THE EDIT</p>
-          <h2>Featured <em>essentials</em></h2>
-        </div>
-        <a class="under-link dark" href="#atelier">Shop all ↗</a>
+    <!-- FEATURED — LIVE FROM DB, styled like reference -->
+    <section class="section featured" id="featured">
+      <div class="section-head reveal">
+        <h2>Featured Products</h2>
+        <a class="under-link dark" href="#" id="refreshLink">View All →</a>
       </div>
 
-      <div class="product-grid" id="showGrid" style="display:none;"></div>
-      <div id="showEmpty">
-        <div class="state-box"><div class="state-ico">◌</div><h4>Preparing the edit…</h4><p>Selecting live creations from the API.</p></div>
+      <div class="product-grid" id="productGrid">
       </div>
     </section>
 
-    <!-- Inventory atelier: full CRUD over the same API, same design language -->
-    <section class="section atelier reveal" id="atelier">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow dark">INVENTORY ATELIER — LIVE FROM API</p>
-          <h2>Veloura <em>collection</em></h2>
-          <p class="atelier-sub" id="resultCount">Curating…</p>
-        </div>
-        <button class="under-link dark btn-reset" id="btnRefresh" type="button">↻ Refresh</button>
-      </div>
-
-      <div class="toolbar">
-        <div class="searchbox">
-          <span>⌕</span>
-          <input id="tableSearch" type="search" placeholder="Search creations…" aria-label="Search creations">
-        </div>
-        <select class="select" id="filterCategory" aria-label="Category filter"><option value="all">All Categories</option></select>
-        <select class="select" id="filterStock" aria-label="Stock filter">
-          <option value="all">All Stock</option>
-          <option value="in">In Stock</option>
-          <option value="low">Low Stock</option>
-          <option value="out">Out of Stock</option>
-        </select>
-        <select class="select" id="sortSelect" aria-label="Sort option">
-          <option value="id-asc">Sort · N°</option>
-          <option value="name-asc">Sort · Name</option>
-          <option value="price-asc">Sort · Price ↑</option>
-          <option value="price-desc">Sort · Price ↓</option>
-          <option value="stock-asc">Sort · Stock ↑</option>
-          <option value="exp-asc">Sort · Expiry ↑</option>
-        </select>
-        <button class="button dark-button btn-sm" type="button" onclick="openModal('modalAdd')">+ Add Cosmetic</button>
-      </div>
-
-      <div class="stats-row">
-        <div class="stat-chip"><b id="statTotal">…</b><span>TOTAL PRODUCTS</span></div>
-        <div class="stat-chip"><b id="statUnits">…</b><span>TOTAL UNITS</span></div>
-        <div class="stat-chip"><b id="statLow">…</b><span>LOW STOCK · <i id="statLowSub">loading…</i></span></div>
-        <div class="stat-chip"><b id="statExp">…</b><span>EXPIRING SOON</span></div>
-      </div>
-
-      <div class="product-grid atelier-grid" id="collGrid" style="display:none;"></div>
-      <div class="state-box" id="collEmpty"></div>
-
-      <div class="api-note" id="about">
-        <div>
-          <b>Beauty, curated — stock, mastered.</b>
-          <p>Every card above is poured live from <code>/Veloura/api/cosmetics</code>. Status: 0 = OUT · 1–10 = LOW · 10+ = IN. <span id="apiStatusText">Connecting…</span> · <a href="#atelier" onclick="loadCosmetics();return false;">reload data</a></p>
-        </div>
-        <div class="api-kv">
-          <span>GET · GET /{id}</span><span>POST · PUT /{id}</span><span>PATCH /{id} · DELETE /{id}</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="quote reveal" id="journal">
-      <p class="eyebrow">A NOTE FROM VELOURA</p>
-      <blockquote>“Beauty isn't something<br>to chase. <em>It's something<br>to feel.</em>”</blockquote>
-      <a class="under-link" href="#atelier">Read the journal ↗</a>
-    </section>
-
-    <section class="newsletter reveal">
+    <!-- CIRCLE -->
+    <section class="newsletter reveal" id="journal">
+      <div class="nl-art"></div>
       <div>
-        <p class="eyebrow">THE VELOURA CIRCLE</p>
-        <h2>Come closer to<br><em>your ritual.</em></h2>
+        <h2>Join the Velora Circle</h2>
+        <p>Be the first to know about new launches, exclusive offers, and beauty rituals.</p>
       </div>
       <form id="newsletter">
         <input type="email" placeholder="Your email address" required>
-        <button type="submit">Join ↗</button>
+        <button type="submit" aria-label="Join">→</button>
       </form>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="foot-top">
-      <div class="foot-brand">
-        <a class="logo" href="#home">velora</a>
-        <span>Beauty beyond skin.</span>
-      </div>
-      <div class="foot-links"><a href="#collections">Shop</a><a href="#ritual">About</a><a href="#journal">Journal</a><a href="#atelier">Contact</a></div>
+      <div class="foot-brand"><a class="logo" href="#home">velora</a><span>Beauty beyond skin.</span></div>
+      <div class="foot-links"><a href="#featured">Shop</a><a href="#ritual">About</a><a href="#journal">Journal</a><a href="#">Contact</a></div>
       <div class="foot-socials"><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="Pinterest">ⓟ</a><a href="#" aria-label="Mail">✉</a></div>
     </div>
-    <div class="foot-bottom">
-      <small>© 2024 Velora. All rights reserved.</small>
-      <div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Shipping</a><a href="#">FAQs</a></div>
-    </div>
+    <div class="foot-bottom"><small>© 2024 Velora. All rights reserved.</small><div><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Shipping</a><a href="#">FAQs</a></div></div>
   </footer>
 
-  <!-- Add (POST) -->
-  <div class="overlay" id="modalAdd" role="dialog" aria-modal="true" aria-label="Add cosmetic">
-    <div class="modal">
-      <div class="modal-head"><div class="m-ico">✦</div><div><h3>Add Cosmetic</h3><p>POST /api/cosmetics</p></div><button class="modal-x" onclick="closeModal('modalAdd')">✕</button></div>
-      <div class="modal-body">
-        <form id="addForm" novalidate>
-          <div class="form-grid">
-            <div class="field"><label for="f-id">Cosmetic ID</label><input id="f-id" type="number" min="1" step="1" placeholder="e.g. 101"><span class="err">Enter a positive numeric ID.</span></div>
-            <div class="field"><label for="f-name">Cosmetic Name</label><input id="f-name" type="text" placeholder="e.g. Rose Glow Serum"><span class="err">Name needs at least 2 characters.</span></div>
-            <div class="field"><label for="f-category">Category</label><input id="f-category" type="text" placeholder="e.g. Serum"><span class="err">Category is required.</span></div>
-            <div class="field"><label for="f-brand">Brand</label><input id="f-brand" type="text" placeholder="e.g. Veloura"><span class="err">Brand is required.</span></div>
-            <div class="field"><label for="f-price">Price (₹)</label><input id="f-price" type="number" min="0" step="0.01" placeholder="e.g. 699.00"><span class="err">Enter a price ≥ 0.</span></div>
-            <div class="field"><label for="f-qty">Quantity</label><input id="f-qty" type="number" min="0" step="1" placeholder="e.g. 35"><span class="err">Enter a quantity ≥ 0.</span></div>
-            <div class="field full"><label for="f-expiry">Expiry Date</label><input id="f-expiry" type="date"><span class="err">Pick a valid date (YYYY-MM-DD).</span></div>
-          </div>
-          <div class="modal-actions">
-            <button type="button" class="button ghost" onclick="closeModal('modalAdd')">Cancel</button>
-            <button type="submit" class="button dark-button" id="btnAdd"><span class="spinner"></span> Add Cosmetic</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- View (GET by id) -->
-  <div class="overlay" id="modalView" role="dialog" aria-modal="true" aria-label="Product details">
-    <div class="modal">
-      <div class="modal-head"><div class="m-ico">◇</div><div><h3>Creation Details</h3><p>GET /api/cosmetics/{id} · live</p></div><button class="modal-x" onclick="closeModal('modalView')">✕</button></div>
-      <div class="modal-body">
-        <div class="detail-hero" id="detailHero"></div>
-        <div class="detail-grid" id="detailGrid"></div>
-        <div class="modal-actions"><button class="button dark-button" onclick="closeModal('modalView')">Close</button></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Edit (PUT) -->
-  <div class="overlay" id="modalEdit" role="dialog" aria-modal="true" aria-label="Edit product">
-    <div class="modal">
-      <div class="modal-head"><div class="m-ico">✎</div><div><h3>Refine Creation</h3><p id="editSubtitle">—</p></div><button class="modal-x" onclick="closeModal('modalEdit')">✕</button></div>
-      <div class="modal-body">
-        <form id="editForm" novalidate>
-          <input type="hidden" id="e-id">
-          <div class="form-grid">
-            <div class="field"><label for="e-id-show">Cosmetic ID</label><input id="e-id-show" type="text" readonly></div>
-            <div class="field"><label for="e-name">Cosmetic Name</label><input id="e-name" type="text"></div>
-            <div class="field"><label for="e-category">Category</label><input id="e-category" type="text"></div>
-            <div class="field"><label for="e-brand">Brand</label><input id="e-brand" type="text"></div>
-            <div class="field"><label for="e-price">Price (₹)</label><input id="e-price" type="number" min="0" step="0.01"></div>
-            <div class="field"><label for="e-qty">Quantity</label><input id="e-qty" type="number" min="0" step="1"></div>
-            <div class="field full"><label for="e-expiry">Expiry Date</label><input id="e-expiry" type="date"></div>
-          </div>
-          <div class="modal-actions">
-            <button type="button" class="button ghost" onclick="closeModal('modalEdit')">Cancel</button>
-            <button type="submit" class="button dark-button" id="btnSaveEdit"><span class="spinner"></span> Save Changes</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Stock (PATCH) -->
-  <div class="overlay" id="modalStock" role="dialog" aria-modal="true" aria-label="Update stock">
-    <div class="modal narrow">
-      <div class="modal-head"><div class="m-ico">▣</div><div><h3>Update Stock</h3><p id="stockSubtitle">—</p></div><button class="modal-x" onclick="closeModal('modalStock')">✕</button></div>
-      <div class="modal-body">
-        <div class="stock-stepper">
-          <button class="step-btn" onclick="stockStep(-1)" aria-label="Decrease">−</button>
-          <input id="stockInput" type="number" min="0" step="1" aria-label="New quantity">
-          <button class="step-btn" onclick="stockStep(1)" aria-label="Increase">＋</button>
-          <span>units · PATCH</span>
-        </div>
-        <div class="modal-actions">
-          <button class="button ghost" onclick="closeModal('modalStock')">Cancel</button>
-          <button class="button dark-button" id="btnSaveStock" onclick="updateStock()"><span class="spinner"></span> Save Stock</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Delete (DELETE) -->
-  <div class="overlay" id="modalDelete" role="dialog" aria-modal="true" aria-label="Confirm delete">
-    <div class="modal narrow">
-      <div class="modal-head"><div class="m-ico danger">×</div><div><h3>Remove creation?</h3><p>DELETE /api/cosmetics/{id}</p></div><button class="modal-x" onclick="closeModal('modalDelete')">✕</button></div>
-      <div class="modal-body">
-        <p id="deleteText">Remove this creation? This cannot be undone.</p>
-        <div class="modal-actions">
-          <button class="button ghost" onclick="closeModal('modalDelete')">Keep it</button>
-          <button class="button danger" id="btnConfirmDelete" onclick="deleteCosmetic()"><span class="spinner"></span> Yes, remove</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="toast" id="toast"></div>
-  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <div id="liveToasts"></div>
 
   <div class="search-overlay" id="searchOverlay">
     <button id="closeSearch">×</button>
-    <p class="eyebrow dark">SEARCH VELOURA</p>
+    <p class="eyebrow dark">SEARCH VELORA</p>
     <input id="searchInput" placeholder="What are you looking for?">
   </div>
 
-  <script src="js/app.js"></script>
+  <div class="overlay" id="modalView"><div class="modal narrow">
+    <div class="modal-head"><div><h3 id="viewTitle">Details</h3><p id="viewSub">GET /api/cosmetics/{id}</p></div><button class="modal-x" data-close="modalView">×</button></div>
+    <div class="modal-body"><div class="detail-grid" id="detailGrid"></div>
+      <div class="modal-actions"><button class="btn-pill ghost" data-close="modalView">Close</button></div></div>
+  </div></div>
+
+  <div class="overlay" id="modalAdd"><div class="modal">
+    <div class="modal-head"><div><h3>Add product</h3><p>POST /api/cosmetics — field order matters</p></div><button class="modal-x" data-close="modalAdd">×</button></div>
+    <div class="modal-body"><form id="addForm"><div class="form-grid">
+      <div class="field"><label>ID</label><input id="f-id" type="number" min="1" required></div>
+      <div class="field"><label>Name</label><input id="f-name" required></div>
+      <div class="field"><label>Category</label><input id="f-category" required></div>
+      <div class="field"><label>Brand</label><input id="f-brand" required></div>
+      <div class="field"><label>Price ₹</label><input id="f-price" type="number" min="0" step="0.01" required></div>
+      <div class="field"><label>Quantity</label><input id="f-qty" type="number" min="0" step="1" required></div>
+      <div class="field full"><label>Expiry (yyyy-mm-dd)</label><input id="f-expiry" type="date" required></div>
+    </div><div class="modal-actions"><button type="button" class="btn-pill ghost" data-close="modalAdd">Cancel</button><button type="submit" class="btn-pill" id="btnAdd">Add → appears in UI</button></div></form></div>
+  </div></div>
+
+  <div class="overlay" id="modalEdit"><div class="modal">
+    <div class="modal-head"><div><h3>Edit product</h3><p id="editSub">PUT /api/cosmetics/{id}</p></div><button class="modal-x" data-close="modalEdit">×</button></div>
+    <div class="modal-body"><form id="editForm"><div class="form-grid">
+      <div class="field"><label>ID (locked)</label><input id="e-id-show" disabled></div>
+      <div class="field"><label>Name</label><input id="e-name" required></div>
+      <div class="field"><label>Category</label><input id="e-category" required></div>
+      <div class="field"><label>Brand</label><input id="e-brand" required></div>
+      <div class="field"><label>Price ₹</label><input id="e-price" type="number" min="0" step="0.01" required></div>
+      <div class="field"><label>Quantity</label><input id="e-qty" type="number" min="0" step="1" required></div>
+      <div class="field full"><label>Expiry</label><input id="e-expiry" type="date" required></div>
+    </div><input id="e-id" type="hidden"><div class="modal-actions"><button type="button" class="btn-pill ghost" data-close="modalEdit">Cancel</button><button type="submit" class="btn-pill" id="btnSaveEdit">Save</button></div></form></div>
+  </div></div>
+
+  <div class="overlay" id="modalStock"><div class="modal narrow">
+    <div class="modal-head"><div><h3>Update stock</h3><p id="stockSub">PATCH /api/cosmetics/{id}</p></div><button class="modal-x" data-close="modalStock">×</button></div>
+    <div class="modal-body"><div class="stepper"><button type="button" id="stockMinus">−</button><input id="stockInput" type="number" min="0"><button type="button" id="stockPlus">+</button></div>
+      <div class="modal-actions"><button class="btn-pill ghost" data-close="modalStock">Cancel</button><button class="btn-pill" id="btnSaveStock">Save stock → UI updates</button></div></div>
+  </div></div>
+
+  <div class="overlay" id="modalDelete"><div class="modal narrow">
+    <div class="modal-head"><div><h3>Delete product?</h3><p>DELETE /api/cosmetics/{id}</p></div><button class="modal-x" data-close="modalDelete">×</button></div>
+    <div class="modal-body"><p id="deleteText" style="font-size:13px;color:var(--muted)"></p>
+      <div class="modal-actions"><button class="btn-pill ghost" data-close="modalDelete">Keep</button><button class="btn-pill" id="btnConfirmDelete" style="background:#8f3a3a">Delete → disappears</button></div></div>
+  </div></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
